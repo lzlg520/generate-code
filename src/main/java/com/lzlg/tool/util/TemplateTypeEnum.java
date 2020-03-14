@@ -20,7 +20,8 @@ public enum TemplateTypeEnum {
     // 服务接口实现类
     service_impl("java/service_impl"),
     // yaml配置文件
-    configuration("yaml/configuration");
+    configuration("yaml/configuration"),
+    pom("xml/pom");
 
     private String name;
 

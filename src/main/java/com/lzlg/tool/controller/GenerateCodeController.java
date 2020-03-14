@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -29,12 +28,13 @@ public class GenerateCodeController {
     @PostMapping("/generate/code")
     public void generateCode(@RequestBody RequestParam requestParam, HttpServletResponse response) {
         generateCodeService.generateCode(requestParam);
-        response.setContentType("application/x-zip-compressed;charset=UTF-8");
-        response.setHeader("Content-Disposition", "attachment;filename=test.zip");
-        try (ServletOutputStream os = response.getOutputStream()) {
-            os.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
+//        response.setContentType("application/x-zip-compressed;charset=UTF-8");
+//        response.setHeader("Content-Disposition", "attachment;filename=test.zip");
+//        try (ServletOutputStream os = response.getOutputStream()) {
+//            os.flush();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

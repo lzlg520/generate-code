@@ -17,16 +17,16 @@ import java.io.FileOutputStream;
  * @author lzlg
  * 2020/3/14 21:00
  */
-public class ConfigurationHandler {
+public class PomHandler {
 
     /**
      * 根据请求的数据生成配置文件
      */
     public void generate(RequestParam param) {
         try {
-            Template template = ResourceUtil.getTemplate(TemplateTypeEnum.configuration);
+            Template template = ResourceUtil.getTemplate(TemplateTypeEnum.pom);
             String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, param);
-            IOUtils.write(content, new FileOutputStream(new File("dist/" + Constant.configuration)));
+            IOUtils.write(content, new FileOutputStream(new File("dist/" + Constant.pom)));
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
