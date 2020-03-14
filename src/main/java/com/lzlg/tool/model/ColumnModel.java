@@ -16,8 +16,10 @@ import lombok.ToString;
 public class ColumnModel {
 
     private String type;
-
+    // 列名 user_address
     private String name;
+    // 驼峰命名 userAddress
+    private String camelCaseName;
 
     private String remarks;
 

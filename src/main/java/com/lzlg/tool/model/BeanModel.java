@@ -16,10 +16,18 @@ import java.util.List;
 @Data
 @ToString
 @NoArgsConstructor
-public class BeanModel extends BaseModel implements Serializable {
+public class BeanModel implements Serializable {
 
+    private String groupId;
+
+    private String artifactId;
+    // 表名 user_info
     private String tableName;
-
+    // 驼峰命名 userInfo
+    private String camelCaseName;
+    // 首字母大写 UserInfo
+    private String firstUpperName;
+    // 主键
     private String primaryKey;
 
     private List<ColumnModel> columnModelList;

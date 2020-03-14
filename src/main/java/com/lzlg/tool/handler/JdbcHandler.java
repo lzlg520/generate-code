@@ -1,6 +1,7 @@
 package com.lzlg.tool.handler;
 
 import com.lzlg.tool.bean.DatabaseInfo;
+import com.lzlg.tool.bean.RequestParam;
 import com.lzlg.tool.model.BeanModel;
 import com.lzlg.tool.model.ColumnModel;
 
@@ -24,12 +25,12 @@ public class JdbcHandler {
     /**
      * 获取数据库元数据集合
      */
-    public List<BeanModel> getBeanModelList(DatabaseInfo info) {
+    public List<BeanModel> getBeanModelList(RequestParam param) {
         List<BeanModel> list = new ArrayList<>();
         // 获取数据库连接
         Connection connection = null;
         try {
-            connection = getConnection(info);
+            connection = getConnection(param.getDatabaseInfo());
             // 获取数据库元信息
             DatabaseMetaData databaseMetaData = connection.getMetaData();
 
@@ -38,6 +39,8 @@ public class JdbcHandler {
             ResultSet tables = databaseMetaData.getTables(null, null, null, types);
             while (tables.next()) {
                 BeanModel beanModel = new BeanModel();
+                beanModel.setGroupId(param.getGroupId());
+                beanModel.setArtifactId(param.getArtifactId());
                 // 获取表名称
                 String tableName = tables.getString("TABLE_NAME");
                 beanModel.setTableName(tableName);

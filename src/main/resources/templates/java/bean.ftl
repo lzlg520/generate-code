@@ -1,16 +1,16 @@
-package ${packageName}.controller;
+package ${groupId}.${artifactId}.entity.course;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.Data;
+import lombok.ToString;
 
+@Data
+@ToString
+public class ${tableName} implements Serializable {
 
-@RestController
-@RequestMapping("${requestPath}")
-public class GenerateCodeController {
-
-    @GetMapping("/do")
-    public void generateCode() {
-
-    }
+<#list columnModelList as column>
+    /**
+    * ${column.remarks}
+    */
+    private ${column.type} ${column.name};
+</#list>
 }
