@@ -56,7 +56,7 @@
             if (a === 2) {
                 type = "jar";
             }
-            window.open("http://39.98.152.124:52000/generate/" + type + "?groupId=" +
+            window.open("http://${request_url}:52000/generate/" + type + "?groupId=" +
                 $("#groupId").val() + "&artifactId=" + $("#artifactId").val() + "&url=" + url
                 + "&username=" + $("#username").val() + "&password=" + $("#password").val());
             return false;

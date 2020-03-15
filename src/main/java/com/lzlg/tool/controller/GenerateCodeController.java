@@ -4,7 +4,9 @@ import com.lzlg.tool.bean.RequestData;
 import com.lzlg.tool.config.Constant;
 import com.lzlg.tool.service.GenerateCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,8 +26,16 @@ public class GenerateCodeController {
     @Autowired
     GenerateCodeService generateCodeService;
 
+    @Value("${spring.profiles.active}")
+    String env;
+
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        if (env.equals("dev")) {
+            model.addAttribute("request_url", "127.0.0.1");
+        } else if (env.equals("pro")) {
+            model.addAttribute("request_url", "39.98.152.124");
+        }
         return "index";
     }
 
