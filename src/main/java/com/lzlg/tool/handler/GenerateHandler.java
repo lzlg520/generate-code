@@ -23,7 +23,9 @@ public abstract class GenerateHandler {
         try {
             Template template = ResourceUtil.getTemplate(typeEnum);
             String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
-            IOUtils.write(content, new FileOutputStream(new File("dist/" + fileName)));
+            FileOutputStream fos = new FileOutputStream(new File(fileName));
+            IOUtils.write(content, fos);
+            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());

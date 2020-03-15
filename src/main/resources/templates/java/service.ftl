@@ -12,7 +12,7 @@ public interface ${firstUpperName}Service {
 
     ${firstUpperName} add(${firstUpperName} ${camelCaseName});
 
-    ${firstUpperName} update(${firstUpperName} ${camelCaseName});
+    ${firstUpperName} update(${primaryKeyType} ${primaryKey}, ${firstUpperName} ${camelCaseName});
 
     ${firstUpperName} delete(${primaryKeyType} ${primaryKey});
 }

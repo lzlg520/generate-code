@@ -26,4 +26,5 @@ public interface Constant {
 
     String service_impl = "ServiceImpl";
 
+    String dist = "dist";
 }

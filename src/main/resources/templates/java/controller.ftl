@@ -1,6 +1,7 @@
 package ${groupId}.${packageName}.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import ${groupId}.${packageName}.service.${firstUpperName}Service;
 import ${groupId}.${packageName}.entity.${firstUpperName};
 

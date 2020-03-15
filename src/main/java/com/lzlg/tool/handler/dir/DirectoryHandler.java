@@ -1,6 +1,7 @@
 package com.lzlg.tool.handler.dir;
 
 import com.lzlg.tool.bean.RequestParam;
+import com.lzlg.tool.config.Constant;
 import com.lzlg.tool.util.NamingRuleUtil;
 import com.lzlg.tool.util.TemplateTypeEnum;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  */
 public class DirectoryHandler {
 
-    private Map<TemplateTypeEnum, String> pathMap = new HashMap<>();
+    private static Map<TemplateTypeEnum, String> pathMap = new HashMap<>();
 
     /**
      * 生成目录
@@ -28,7 +29,7 @@ public class DirectoryHandler {
         String basePackage = NamingRuleUtil.toPackage(artifactId);
 
         // ========项目根路径=========
-        String projectRoot = "dist" + File.separator + artifactId
+        String projectRoot = Constant.dist + File.separator + artifactId
                 + File.separator + "src";
         // =========项目代码路径===========
         // main
@@ -72,7 +73,7 @@ public class DirectoryHandler {
                 + File.separator + groupPath + File.separator + basePackage);
 
         // ============设置文件存放路径=========
-        pathMap.put(TemplateTypeEnum.pom, artifactId);
+        pathMap.put(TemplateTypeEnum.pom, Constant.dist + File.separator + artifactId);
         pathMap.put(TemplateTypeEnum.configuration, resources);
         pathMap.put(TemplateTypeEnum.mapper_xml, mapperXml);
         pathMap.put(TemplateTypeEnum.application, artifactPath);
@@ -91,14 +92,14 @@ public class DirectoryHandler {
     /**
      * 根据文件类型获取存放路径
      */
-    public String getPath(TemplateTypeEnum typeEnum) {
+    public static String getPath(TemplateTypeEnum typeEnum) {
         if (pathMap.isEmpty()) {
             return null;
         }
         return pathMap.get(typeEnum);
     }
 
-    public void clean() {
+    public static void clean() {
         pathMap.clear();
     }
 }

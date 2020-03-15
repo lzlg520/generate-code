@@ -2,7 +2,10 @@ package com.lzlg.tool.handler;
 
 import com.lzlg.tool.bean.RequestParam;
 import com.lzlg.tool.config.Constant;
+import com.lzlg.tool.handler.dir.DirectoryHandler;
 import com.lzlg.tool.util.TemplateTypeEnum;
+
+import java.io.File;
 
 /**
  * 配置文件
@@ -16,6 +19,7 @@ public class PomHandler extends GenerateHandler {
      * 根据请求的数据生成配置文件
      */
     public void generate(RequestParam param) {
-        generate(param, TemplateTypeEnum.pom, Constant.pom);
+        generate(param, TemplateTypeEnum.pom, DirectoryHandler.getPath(TemplateTypeEnum.pom)
+                + File.separator + Constant.pom);
     }
 }
