@@ -1,8 +1,8 @@
 package ${groupId}.${artifactId}.service.impl;
 
-import ${groupId}.${artifactId}.entity.${tableName};
-import ${groupId}.${artifactId}.service.${tableName}Service;
-import ${groupId}.${artifactId}.mapper.${tableName}Mapper;
+import ${groupId}.${artifactId}.entity.${firstUpperName};
+import ${groupId}.${artifactId}.service.${firstUpperName}Service;
+import ${groupId}.${artifactId}.mapper.${firstUpperName}Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
@@ -10,45 +10,45 @@ import org.springframework.beans.BeanUtils;
 import java.util.List;
 
 @Service
-public class ${tableName}ServiceImpl implements ${tableName}Service {
+public class ${firstUpperName}ServiceImpl implements ${firstUpperName}Service {
 
     @Autowired
-    ${tableName}Mapper ${tableName}Mapper;
+    ${firstUpperName}Mapper ${camelCaseName}Mapper;
 
     @Override
-    public List<${tableName}> list() {
-        return ${tableName}Mapper.list();
+    public List<${firstUpperName}> list() {
+        return ${camelCaseName}Mapper.list();
     }
 
     @Override
-    public ${tableName} get(int id) {
-        return ${tableName}Mapper.get(id);
+    public ${firstUpperName} get(int id) {
+        return ${camelCaseName}Mapper.get(id);
     }
 
     @Override
-    public ${tableName} add(${tableName} ${tableName}) {
-        ${tableName}Mapper.add(${tableName});
-        return ${tableName};
+    public ${firstUpperName} add(${firstUpperName} ${camelCaseName}) {
+        ${camelCaseName}Mapper.add(${camelCaseName});
+        return ${camelCaseName};
     }
 
     @Override
-    public ${tableName} update(int id, ${tableName} ${tableName}) {
-        ${tableName} old${tableName} = get(id);
-        if (old${tableName} == null) {
-            throw new RuntimeException("Can not get ${tableName} by id");
+    public ${firstUpperName} update(int id, ${firstUpperName} ${camelCaseName}) {
+        ${firstUpperName} old${firstUpperName} = get(id);
+        if (old${firstUpperName} == null) {
+            throw new RuntimeException("Can not get ${firstUpperName} by id");
         }
-        BeanUtils.copyProperties(${tableName}, old${tableName});
-        ${tableName}Mapper.update(old${tableName});
-        return ${tableName};
+        BeanUtils.copyProperties(${camelCaseName}, old${firstUpperName});
+        ${camelCaseName}Mapper.update(old${firstUpperName});
+        return ${camelCaseName};
     }
 
     @Override
-    public ${tableName} delete(int id) {
-        ${tableName} ${tableName} = get(id);
-        if (${tableName} == null) {
-            throw new RuntimeException("Can not get ${tableName} by id");
+    public ${firstUpperName} delete(int id) {
+        ${firstUpperName} ${camelCaseName} = get(id);
+        if (${camelCaseName} == null) {
+            throw new RuntimeException("Can not get ${firstUpperName} by id");
         }
-        ${tableName}Mapper.delete(id);
-        return ${tableName};
+        ${camelCaseName}Mapper.delete(id);
+        return ${camelCaseName};
     }
 }

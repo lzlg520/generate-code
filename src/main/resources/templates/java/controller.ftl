@@ -1,40 +1,40 @@
 package ${groupId}.${artifactId}.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ${groupId}.${artifactId}.service.${tableName}Service;
-import ${groupId}.${artifactId}.entity.${tableName};
+import ${groupId}.${artifactId}.service.${firstUpperName}Service;
+import ${groupId}.${artifactId}.entity.${firstUpperName};
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/${tableName}")
-public class ${tableName}Controller {
+@RequestMapping("/${path}")
+public class ${firstUpperName}Controller {
 
     @Autowired
-    ${tableName}Service ${tableName}Service;
+    ${firstUpperName}Service ${camelCaseName}Service;
 
     @GetMapping("/list")
-    public List<${tableName}> list() {
-        return ${tableName}Service.list();
+    public List<${firstUpperName}> list() {
+        return ${camelCaseName}Service.list();
     }
 
     @GetMapping("/get/{id}")
-    public ${tableName} get(@PathVariable("id") int id) {
-        return ${tableName}Service.get(id);
+    public ${firstUpperName} get(@PathVariable("id") int id) {
+        return ${camelCaseName}Service.get(id);
     }
 
     @PostMapping("/add")
-    public ${tableName} add(@RequestBody ${tableName} ${tableName}) {
-        return ${tableName}Service.add(${tableName});
+    public ${firstUpperName} add(@RequestBody ${firstUpperName} ${camelCaseName}) {
+        return ${camelCaseName}Service.add(${camelCaseName});
     }
 
     @PutMapping("/update/{id}")
-    public ${tableName} update(@PathVariable("id") int id, @RequestBody ${tableName} ${tableName}) {
-        return ${tableName}Service.update(id, ${tableName});
+    public ${firstUpperName} update(@PathVariable("id") int id, @RequestBody ${firstUpperName} ${camelCaseName}) {
+        return ${camelCaseName}Service.update(id, ${camelCaseName});
     }
 
     @DeleteMapping("/delete/{id}")
-    public ${tableName} delete(@PathVariable("id") int id) {
-        return ${tableName}Service.delete(id);
+    public ${firstUpperName} delete(@PathVariable("id") int id) {
+        return ${camelCaseName}Service.delete(id);
     }
 }

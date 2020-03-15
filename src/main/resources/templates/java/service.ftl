@@ -1,18 +1,18 @@
 package ${groupId}.${artifactId}.service;
 
-import ${groupId}.${artifactId}.entity.${tableName};
+import ${groupId}.${artifactId}.entity.${firstUpperName};
 
 import java.util.List;
 
-public interface ${tableName}Service {
+public interface ${firstUpperName}Service {
 
-    List<${tableName}> list();
+    List<${firstUpperName}> list();
 
-    ${tableName} get(int id);
+    ${firstUpperName} get(int id);
 
-    ${tableName} add(${tableName} ${tableName});
+    ${firstUpperName} add(${firstUpperName} ${camelCaseName});
 
-    ${tableName} update(${tableName} ${tableName});
+    ${firstUpperName} update(${firstUpperName} ${camelCaseName});
 
-    ${tableName} delete(int id);
+    ${firstUpperName} delete(int id);
 }

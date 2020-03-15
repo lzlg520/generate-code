@@ -29,6 +29,8 @@ public class BeanModel implements Serializable {
     private String firstUpperName;
     // 主键
     private String primaryKey;
+    // 请求路径
+    private String path;
 
     private List<ColumnModel> columnModelList;
 

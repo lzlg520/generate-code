@@ -1,11 +1,14 @@
-package ${groupId}.${artifactId}.entity.course;
+package ${groupId}.${artifactId}.entity;
 
 import lombok.Data;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 @Data
 @ToString
-public class ${tableName} implements Serializable {
+public class ${firstUpperName} implements Serializable {
 
 <#list columnModelList as column>
     /**

@@ -1,20 +1,20 @@
 package ${groupId}.${artifactId}.mapper;
 
-import ${groupId}.${artifactId}.entity.${tableName};
+import ${groupId}.${artifactId}.entity.${firstUpperName};
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface ${tableName}Mapper {
+public interface ${firstUpperName}Mapper {
 
-    List<${tableName}> list();
+    List<${firstUpperName}> list();
 
-    ${tableName} get(int id);
+    ${firstUpperName} get(int id);
 
-    int add(${tableName} ${tableName});
+    int add(${firstUpperName} ${camelCaseName});
 
-    int update(${tableName} ${tableName});
+    int update(${firstUpperName} ${camelCaseName});
 
     int delete(int id);
 

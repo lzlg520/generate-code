@@ -4,6 +4,8 @@ import com.lzlg.tool.bean.DatabaseInfo;
 import com.lzlg.tool.bean.RequestParam;
 import com.lzlg.tool.model.BeanModel;
 import com.lzlg.tool.model.ColumnModel;
+import com.lzlg.tool.util.NamingRuleUtil;
+import com.lzlg.tool.util.TypeTransferUtil;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -44,6 +46,10 @@ public class JdbcHandler {
                 // 获取表名称
                 String tableName = tables.getString("TABLE_NAME");
                 beanModel.setTableName(tableName);
+                String camelCaseName = NamingRuleUtil.toCamelCase(tableName);
+                beanModel.setCamelCaseName(camelCaseName);
+                beanModel.setFirstUpperName(NamingRuleUtil.toFirstUpper(camelCaseName));
+                beanModel.setPath(NamingRuleUtil.toPath(tableName));
 
                 // 获取表的主键信息
                 ResultSet primaryKeys = databaseMetaData.getPrimaryKeys(null, null, tableName);
@@ -60,9 +66,11 @@ public class JdbcHandler {
                     // 获取列名
                     String name = resultSet.getString("COLUMN_NAME");
                     columnModel.setName(name);
+                    columnModel.setCamelCaseName(NamingRuleUtil.toCamelCase(name));
                     // 获取类型名
                     String type = resultSet.getString("TYPE_NAME");
-                    columnModel.setType(type);
+                    System.out.println(type);
+                    columnModel.setType(TypeTransferUtil.tranfer(type));
                     // 获取注释
                     String remarks = resultSet.getString("REMARKS");
                     columnModel.setRemarks(remarks);
