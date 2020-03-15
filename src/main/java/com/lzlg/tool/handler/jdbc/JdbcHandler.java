@@ -42,11 +42,15 @@ public class JdbcHandler {
             while (tables.next()) {
                 BeanModel beanModel = new BeanModel();
                 beanModel.setGroupId(param.getGroupId());
-                beanModel.setArtifactId(param.getArtifactId());
+                String artifactId = param.getArtifactId();
+                beanModel.setArtifactId(artifactId);
+                beanModel.setFirstUpperArtifact(NamingRuleUtil.middleToCamelCase(artifactId));
+                beanModel.setPackageName(NamingRuleUtil.toPackage(artifactId));
+
                 // 获取表名称
                 String tableName = tables.getString("TABLE_NAME");
                 beanModel.setTableName(tableName);
-                String camelCaseName = NamingRuleUtil.toCamelCase(tableName);
+                String camelCaseName = NamingRuleUtil.underlineToCamelCase(tableName);
                 beanModel.setCamelCaseName(camelCaseName);
                 beanModel.setFirstUpperName(NamingRuleUtil.toFirstUpper(camelCaseName));
                 beanModel.setPath(NamingRuleUtil.toPath(tableName));
@@ -66,7 +70,7 @@ public class JdbcHandler {
                     // 获取列名
                     String name = resultSet.getString("COLUMN_NAME");
                     columnModel.setName(name);
-                    columnModel.setCamelCaseName(NamingRuleUtil.toCamelCase(name));
+                    columnModel.setCamelCaseName(NamingRuleUtil.underlineToCamelCase(name));
                     // 获取类型名
                     String type = resultSet.getString("TYPE_NAME");
                     System.out.println(type);

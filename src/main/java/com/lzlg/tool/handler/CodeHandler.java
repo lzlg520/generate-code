@@ -33,5 +33,8 @@ public class CodeHandler extends GenerateHandler {
         // 生成Mapper XML文件
         generate(model, TemplateTypeEnum.mapper_xml, model.getFirstUpperName() +
                 Constant.mapper + Constant.xml);
+        // 生成启动主类件
+        generate(model, TemplateTypeEnum.application, model.getFirstUpperArtifact()
+                + Constant.application + Constant.java);
     }
 }

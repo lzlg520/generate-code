@@ -1,11 +1,11 @@
 package com.lzlg.tool.service;
 
-import com.lzlg.tool.bean.DatabaseInfo;
 import com.lzlg.tool.bean.RequestParam;
 import com.lzlg.tool.handler.CodeHandler;
 import com.lzlg.tool.handler.ConfigurationHandler;
-import com.lzlg.tool.handler.jdbc.JdbcHandler;
 import com.lzlg.tool.handler.PomHandler;
+import com.lzlg.tool.handler.dir.DirectoryHandler;
+import com.lzlg.tool.handler.jdbc.JdbcHandler;
 import com.lzlg.tool.model.BeanModel;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,8 @@ public class GenerateCodeService {
      */
     public void generateCode(RequestParam param) {
         // 生成工程目录
+        DirectoryHandler directoryHandler = new DirectoryHandler();
+        directoryHandler.makeDirs(param);
 
         // 生成spring boot工程配置文件
         ConfigurationHandler configurationHandler = new ConfigurationHandler();
@@ -35,7 +37,6 @@ public class GenerateCodeService {
         pomHandler.generate(param);
 
         // TODO 1.获取数据库元信息，并组装成Bean
-        DatabaseInfo databaseInfo = param.getDatabaseInfo();
         // 获取数据库表元数据
         JdbcHandler jdbcHandler = new JdbcHandler();
         List<BeanModel> beanModelList = jdbcHandler.getBeanModelList(param);

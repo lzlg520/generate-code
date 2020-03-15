@@ -19,8 +19,12 @@ import java.util.List;
 public class BeanModel implements Serializable {
 
     private String groupId;
-
+    // generate-code
     private String artifactId;
+    // GenerateCode
+    private String firstUpperArtifact;
+    // generate_code
+    private String packageName;
     // 表名 user_info
     private String tableName;
     // 驼峰命名 userInfo

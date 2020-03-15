@@ -1,4 +1,4 @@
-package ${groupId}.${artifactId}.entity;
+package ${groupId}.${packageName}.entity;
 
 import lombok.Data;
 import lombok.ToString;

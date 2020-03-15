@@ -20,6 +20,8 @@ public interface Constant {
 
     String mapper = "Mapper";
 
+    String application = "Application";
+
     String service = "Service";
 
     String service_impl = "ServiceImpl";

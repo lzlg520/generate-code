@@ -1,8 +1,8 @@
-package ${groupId}.${artifactId}.controller;
+package ${groupId}.${packageName}.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ${groupId}.${artifactId}.service.${firstUpperName}Service;
-import ${groupId}.${artifactId}.entity.${firstUpperName};
+import ${groupId}.${packageName}.service.${firstUpperName}Service;
+import ${groupId}.${packageName}.entity.${firstUpperName};
 
 import java.util.List;
 

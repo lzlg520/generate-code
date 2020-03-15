@@ -1,6 +1,6 @@
-package ${groupId}.${artifactId}.mapper;
+package ${groupId}.${packageName}.mapper;
 
-import ${groupId}.${artifactId}.entity.${firstUpperName};
+import ${groupId}.${packageName}.entity.${firstUpperName};
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

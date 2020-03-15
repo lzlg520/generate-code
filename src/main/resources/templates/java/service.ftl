@@ -1,6 +1,6 @@
-package ${groupId}.${artifactId}.service;
+package ${groupId}.${packageName}.service;
 
-import ${groupId}.${artifactId}.entity.${firstUpperName};
+import ${groupId}.${packageName}.entity.${firstUpperName};
 
 import java.util.List;
 

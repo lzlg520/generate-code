@@ -1,8 +1,8 @@
-package ${groupId}.${artifactId}.service.impl;
+package ${groupId}.${packageName}.service.impl;
 
-import ${groupId}.${artifactId}.entity.${firstUpperName};
-import ${groupId}.${artifactId}.service.${firstUpperName}Service;
-import ${groupId}.${artifactId}.mapper.${firstUpperName}Mapper;
+import ${groupId}.${packageName}.entity.${firstUpperName};
+import ${groupId}.${packageName}.service.${firstUpperName}Service;
+import ${groupId}.${packageName}.mapper.${firstUpperName}Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;

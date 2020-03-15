@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${groupId}.${artifactId}.mapper.${firstUpperName}Mapper">
+<mapper namespace="${groupId}.${packageName}.mapper.${firstUpperName}Mapper">
 
-    <select id="list" resultType="${groupId}.${artifactId}.entity.${firstUpperName}">
+    <select id="list" resultType="${groupId}.${packageName}.entity.${firstUpperName}">
         SELECT * FROM ${tableName}
     </select>
 
-    <select id="get" parameterType="java.lang.${primaryKeyType}" resultType="${groupId}.${artifactId}.entity.${firstUpperName}">
+    <select id="get" parameterType="java.lang.${primaryKeyType}" resultType="${groupId}.${packageName}.entity.${firstUpperName}">
         SELECT * FROM ${tableName}
         WHERE ${primaryKey} = ${r'#{'}${primaryKey}${r'}'}
     </select>
 
-    <insert id="add" parameterType="${groupId}.${artifactId}.entity.${firstUpperName}" useGeneratedKeys="true">
+    <insert id="add" parameterType="${groupId}.${packageName}.entity.${firstUpperName}" useGeneratedKeys="true">
         INSERT INTO ${tableName}
         (
         <#list columnModelList as column>
@@ -30,7 +30,7 @@
         );
     </insert>
 
-    <update id="update" parameterType="${groupId}.${artifactId}.entity.${firstUpperName}">
+    <update id="update" parameterType="${groupId}.${packageName}.entity.${firstUpperName}">
         UPDATE ${tableName}
         <trim prefix="set" suffixOverrides=",">
             <#list columnModelList as column>
