@@ -1,7 +1,6 @@
 package com.lzlg.tool.handler.jdbc;
 
-import com.lzlg.tool.bean.DatabaseInfo;
-import com.lzlg.tool.bean.RequestParam;
+import com.lzlg.tool.bean.RequestData;
 import com.lzlg.tool.model.BeanModel;
 import com.lzlg.tool.model.ColumnModel;
 import com.lzlg.tool.util.NamingRuleUtil;
@@ -27,12 +26,12 @@ public class JdbcHandler {
     /**
      * 获取数据库元数据集合
      */
-    public List<BeanModel> getBeanModelList(RequestParam param) {
+    public List<BeanModel> getBeanModelList(RequestData param) {
         List<BeanModel> list = new ArrayList<>();
         // 获取数据库连接
         Connection connection = null;
         try {
-            connection = getConnection(param.getDatabaseInfo());
+            connection = getConnection(param);
             // 获取数据库元信息
             DatabaseMetaData databaseMetaData = connection.getMetaData();
 
@@ -74,7 +73,7 @@ public class JdbcHandler {
                     // 获取类型名
                     String type = resultSet.getString("TYPE_NAME");
                     System.out.println(type);
-                    String javaType = TypeTransferUtil.tranfer(type);
+                    String javaType = TypeTransferUtil.transfer(type);
                     columnModel.setType(javaType);
                     // 如果列名等于主键名，则记录主键类型
                     if (name.equals(beanModel.getPrimaryKey())) {
@@ -102,11 +101,11 @@ public class JdbcHandler {
     /**
      * 根据数据库信息获取数据库连接
      */
-    private Connection getConnection(DatabaseInfo info) throws Exception {
+    private Connection getConnection(RequestData param) throws Exception {
         // 加载驱动
         Class.forName(mysql_driver);
         // 创建连接
-        return DriverManager.getConnection(info.getUrl(), info.getUsername(), info.getPassword());
+        return DriverManager.getConnection(param.getUrl(), param.getUsername(), param.getPassword());
     }
 
     /**

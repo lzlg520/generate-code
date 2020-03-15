@@ -1,6 +1,6 @@
 package com.lzlg.tool.handler.dir;
 
-import com.lzlg.tool.bean.RequestParam;
+import com.lzlg.tool.bean.RequestData;
 import com.lzlg.tool.config.Constant;
 import com.lzlg.tool.util.NamingRuleUtil;
 import com.lzlg.tool.util.TemplateTypeEnum;
@@ -22,7 +22,7 @@ public class DirectoryHandler {
     /**
      * 生成目录
      */
-    public void makeDirs(RequestParam param) {
+    public void makeDirs(RequestData param) {
         String groupPath = NamingRuleUtil.toGroupPath(param.getGroupId());
 
         String artifactId = param.getArtifactId();

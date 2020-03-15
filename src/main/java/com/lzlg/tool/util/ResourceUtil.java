@@ -29,7 +29,7 @@ public class ResourceUtil {
         // 获取模板文件的输入流，并转换成String
         InputStream is = loader.getResourceAsStream("templates/" + typeName + ".ftl");
         String content = IOUtils.toString(is, "utf-8");
-
+        is.close();
         // 模板配置
         Configuration configuration = new Configuration(Configuration.getVersion());
         StringTemplateLoader loader = new StringTemplateLoader();

@@ -32,7 +32,7 @@ public class TypeTransferUtil {
     /**
      * 数据库字段类型转Java类型
      */
-    public static String tranfer(String dbType) {
+    public static String transfer(String dbType) {
         if (StringUtils.isEmpty(dbType)) {
             return null;
         }

@@ -5,9 +5,9 @@ spring:
     name: ${artifactId}
   datasource:
     druid:
-      url: ${databaseInfo.url}
-      username: ${databaseInfo.username}
-      password: ${databaseInfo.password}
+      url: ${url}
+      username: ${username}
+      password: ${password}
       driverClassName: com.mysql.jdbc.Driver
       initialSize: 5  #初始建立连接数量
       minIdle: 5  #最小连接数量

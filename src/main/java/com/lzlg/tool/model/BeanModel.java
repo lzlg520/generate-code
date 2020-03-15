@@ -39,5 +39,4 @@ public class BeanModel implements Serializable {
     private String path;
 
     private List<ColumnModel> columnModelList;
-
 }

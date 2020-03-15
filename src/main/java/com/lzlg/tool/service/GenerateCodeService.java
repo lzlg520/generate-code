@@ -1,15 +1,18 @@
 package com.lzlg.tool.service;
 
-import com.lzlg.tool.bean.RequestParam;
+import com.lzlg.tool.bean.RequestData;
+import com.lzlg.tool.config.Constant;
 import com.lzlg.tool.handler.CodeHandler;
 import com.lzlg.tool.handler.ConfigurationHandler;
 import com.lzlg.tool.handler.PomHandler;
 import com.lzlg.tool.handler.dir.DirectoryHandler;
+import com.lzlg.tool.handler.jar.JarHandler;
 import com.lzlg.tool.handler.jdbc.JdbcHandler;
 import com.lzlg.tool.handler.pack.PackHandler;
 import com.lzlg.tool.model.BeanModel;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -24,7 +27,17 @@ public class GenerateCodeService {
     /**
      * 生成项目并打包成zip
      */
-    public void generateCode(RequestParam param) {
+    public void generateCode(RequestData param) {
+        generate(param);
+        // 打包dist文件夹为zip，返回前端
+        PackHandler packHandler = new PackHandler();
+        packHandler.pack(param.getArtifactId());
+    }
+
+    /**
+     * 生成项目
+     */
+    private void generate(RequestData param) {
         // 生成工程目录
         DirectoryHandler directoryHandler = new DirectoryHandler();
         directoryHandler.makeDirs(param);
@@ -47,8 +60,17 @@ public class GenerateCodeService {
         for (BeanModel beanModel : beanModelList) {
             codeHandler.generate(beanModel);
         }
-        // TODO 3.打包dist文件夹为zip，返回前端
-        PackHandler packHandler = new PackHandler();
-        packHandler.pack(param.getArtifactId());
+    }
+
+    /**
+     * 生成直接可运行的jar包
+     */
+    public void generateJar(RequestData requestData) {
+        // 生成项目
+        generate(requestData);
+        // TODO 运行mvn命令，打成jar包
+        JarHandler jarHandler = new JarHandler();
+        String path = Constant.dist + File.separator + requestData.getArtifactId() + File.separator;
+        jarHandler.getJar(path + Constant.pom);
     }
 }

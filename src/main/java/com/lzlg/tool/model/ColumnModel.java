@@ -22,5 +22,4 @@ public class ColumnModel {
     private String camelCaseName;
 
     private String remarks;
-
 }
