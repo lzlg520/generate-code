@@ -21,8 +21,8 @@ public class ${firstUpperName}ServiceImpl implements ${firstUpperName}Service {
     }
 
     @Override
-    public ${firstUpperName} get(int id) {
-        return ${camelCaseName}Mapper.get(id);
+    public ${firstUpperName} get(${primaryKeyType} ${primaryKey}) {
+        return ${camelCaseName}Mapper.get(${primaryKey});
     }
 
     @Override
@@ -32,10 +32,10 @@ public class ${firstUpperName}ServiceImpl implements ${firstUpperName}Service {
     }
 
     @Override
-    public ${firstUpperName} update(int id, ${firstUpperName} ${camelCaseName}) {
-        ${firstUpperName} old${firstUpperName} = get(id);
+    public ${firstUpperName} update(${primaryKeyType} ${primaryKey}, ${firstUpperName} ${camelCaseName}) {
+        ${firstUpperName} old${firstUpperName} = get(${primaryKey});
         if (old${firstUpperName} == null) {
-            throw new RuntimeException("Can not get ${firstUpperName} by id");
+            throw new RuntimeException("Can not get ${firstUpperName} by ${primaryKey}");
         }
         BeanUtils.copyProperties(${camelCaseName}, old${firstUpperName});
         ${camelCaseName}Mapper.update(old${firstUpperName});
@@ -43,12 +43,12 @@ public class ${firstUpperName}ServiceImpl implements ${firstUpperName}Service {
     }
 
     @Override
-    public ${firstUpperName} delete(int id) {
-        ${firstUpperName} ${camelCaseName} = get(id);
+    public ${firstUpperName} delete(${primaryKeyType} ${primaryKey}) {
+        ${firstUpperName} ${camelCaseName} = get(${primaryKey});
         if (${camelCaseName} == null) {
-            throw new RuntimeException("Can not get ${firstUpperName} by id");
+            throw new RuntimeException("Can not get ${firstUpperName} by ${primaryKey}");
         }
-        ${camelCaseName}Mapper.delete(id);
+        ${camelCaseName}Mapper.delete(${primaryKey});
         return ${camelCaseName};
     }
 }

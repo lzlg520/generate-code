@@ -10,12 +10,12 @@ public interface ${firstUpperName}Mapper {
 
     List<${firstUpperName}> list();
 
-    ${firstUpperName} get(int id);
+    ${firstUpperName} get(${primaryKeyType} ${primaryKey});
 
     int add(${firstUpperName} ${camelCaseName});
 
     int update(${firstUpperName} ${camelCaseName});
 
-    int delete(int id);
+    int delete(${primaryKeyType} ${primaryKey});
 
 }

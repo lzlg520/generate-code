@@ -18,8 +18,8 @@ public class ${firstUpperName}Controller {
         return ${camelCaseName}Service.list();
     }
 
-    @GetMapping("/get/{id}")
-    public ${firstUpperName} get(@PathVariable("id") int id) {
+    @GetMapping("/get/{${primaryKey}}")
+    public ${firstUpperName} get(@PathVariable("${primaryKey}") ${primaryKeyType} ${primaryKey}) {
         return ${camelCaseName}Service.get(id);
     }
 
@@ -28,13 +28,13 @@ public class ${firstUpperName}Controller {
         return ${camelCaseName}Service.add(${camelCaseName});
     }
 
-    @PutMapping("/update/{id}")
-    public ${firstUpperName} update(@PathVariable("id") int id, @RequestBody ${firstUpperName} ${camelCaseName}) {
-        return ${camelCaseName}Service.update(id, ${camelCaseName});
+    @PutMapping("/update/{${primaryKey}}")
+    public ${firstUpperName} update(@PathVariable("${primaryKey}") ${primaryKeyType} ${primaryKey}, @RequestBody ${firstUpperName} ${camelCaseName}) {
+        return ${camelCaseName}Service.update(${primaryKey}, ${camelCaseName});
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ${firstUpperName} delete(@PathVariable("id") int id) {
-        return ${camelCaseName}Service.delete(id);
+    @DeleteMapping("/delete/{${primaryKey}}")
+    public ${firstUpperName} delete(@PathVariable("${primaryKey}") ${primaryKeyType} ${primaryKey}) {
+        return ${camelCaseName}Service.delete(${primaryKey});
     }
 }

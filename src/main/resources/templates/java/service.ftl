@@ -8,11 +8,11 @@ public interface ${firstUpperName}Service {
 
     List<${firstUpperName}> list();
 
-    ${firstUpperName} get(int id);
+    ${firstUpperName} get(${primaryKeyType} ${primaryKey});
 
     ${firstUpperName} add(${firstUpperName} ${camelCaseName});
 
     ${firstUpperName} update(${firstUpperName} ${camelCaseName});
 
-    ${firstUpperName} delete(int id);
+    ${firstUpperName} delete(${primaryKeyType} ${primaryKey});
 }

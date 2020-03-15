@@ -6,16 +6,16 @@
         SELECT * FROM ${tableName}
     </select>
 
-    <select id="get" parameterType="java.lang.Integer" resultType="${groupId}.${artifactId}.entity.${firstUpperName}">
+    <select id="get" parameterType="java.lang.${primaryKeyType}" resultType="${groupId}.${artifactId}.entity.${firstUpperName}">
         SELECT * FROM ${tableName}
-        WHERE id = ${r'#{id}'}
+        WHERE ${primaryKey} = ${r'#{'}${primaryKey}${r'}'}
     </select>
 
     <insert id="add" parameterType="${groupId}.${artifactId}.entity.${firstUpperName}" useGeneratedKeys="true">
         INSERT INTO ${tableName}
         (
         <#list columnModelList as column>
-            <#if column.name != 'id'>
+            <#if column.name != '${primaryKey}'>
                 ${column.name}<#if column_has_next>,</#if>
             </#if>
         </#list>
@@ -23,8 +23,8 @@
         VALUES
         (
         <#list columnModelList as column>
-            <#if column.name != 'id'>
-                ${r'#{column.name}'}<#if column_has_next>,</#if>
+            <#if column.name != '${primaryKey}'>
+                ${r'#{'}${column.camelCaseName}${r'}'}<#if column_has_next>,</#if>
             </#if>
         </#list>
         );
@@ -34,16 +34,16 @@
         UPDATE ${tableName}
         <trim prefix="set" suffixOverrides=",">
             <#list columnModelList as column>
-                <#if column.name != 'id'>
-                    <if test="${column.name} != null">${column.name} = ${r'#{column.name}'},</if>
+                <#if column.name != '${primaryKey}'>
+                    <if test="${column.name} != null">${column.name} = ${r'#{'}${column.camelCaseName}${r'}'},</if>
                 </#if>
             </#list>
         </trim>
-        WHERE id = ${r'#{tableName.id}'}
+        WHERE ${primaryKey} = ${r'#{'}${primaryKey}${r'}'}
     </update>
 
-    <delete id="delete" parameterType="java.lang.Integer">
+    <delete id="delete" parameterType="java.lang.${primaryKeyType}">
         DELETE FROM ${tableName}
-        WHERE id = ${r'#{id}'}
+        WHERE ${primaryKey} = ${r'#{'}${primaryKey}${r'}'}
     </delete>
 </mapper>

@@ -1,4 +1,4 @@
-package com.lzlg.tool.handler;
+package com.lzlg.tool.handler.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

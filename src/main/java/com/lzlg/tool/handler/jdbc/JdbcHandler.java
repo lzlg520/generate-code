@@ -1,4 +1,4 @@
-package com.lzlg.tool.handler;
+package com.lzlg.tool.handler.jdbc;
 
 import com.lzlg.tool.bean.DatabaseInfo;
 import com.lzlg.tool.bean.RequestParam;
@@ -70,7 +70,12 @@ public class JdbcHandler {
                     // 获取类型名
                     String type = resultSet.getString("TYPE_NAME");
                     System.out.println(type);
-                    columnModel.setType(TypeTransferUtil.tranfer(type));
+                    String javaType = TypeTransferUtil.tranfer(type);
+                    columnModel.setType(javaType);
+                    // 如果列名等于主键名，则记录主键类型
+                    if (name.equals(beanModel.getPrimaryKey())) {
+                        beanModel.setPrimaryKeyType(javaType);
+                    }
                     // 获取注释
                     String remarks = resultSet.getString("REMARKS");
                     columnModel.setRemarks(remarks);

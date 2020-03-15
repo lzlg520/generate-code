@@ -8,8 +8,20 @@ package com.lzlg.tool.config;
  */
 public interface Constant {
 
-    String configuration = "application.yaml";
+    String configuration = "application.yml";
 
     String pom = "pom.xml";
+
+    String java = ".java";
+
+    String xml = ".xml";
+
+    String controller = "Controller";
+
+    String mapper = "Mapper";
+
+    String service = "Service";
+
+    String service_impl = "ServiceImpl";
 
 }
